@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
-#include <conio.h>
+#include <termio.h>
 #include <random>
 using namespace std;
 
@@ -21,6 +21,23 @@ struct point{
         y=b;
     }
 };
+
+int bytesWaiting;
+int _kbhit() {
+    static const int STDIN = 0;
+    static bool initialized = false;
+
+    if ( !initialized ) {
+        termios term;
+        tcgetattr(STDIN, &term);
+        term.c_lflag &= ~ICANON;
+        tcsetattr(STDIN, TCSANOW, &term);
+        setbuf(stdin, NULL);
+        initialized=true;
+    }
+    ioctl(STDIN, FIONREAD, &bytesWaiting);
+    return bytesWaiting;
+}
 
 class snake{
 public:
@@ -47,7 +64,7 @@ void snake::update(bool hit){
     previous_pos=body;
     if (hit){
         previous_dir=dir;
-        dir = _getch();
+        cin>>dir;
     if(body.size()>1)
         set_dir();
     }
@@ -125,7 +142,7 @@ class game{
 public:
     game(int, int);
     void food_generator();
-    void update(int);
+    void update(uint);
     void chk_losing();
     void start();
 private:
@@ -185,9 +202,9 @@ game::game(int w, int h){
             chk_losing();
         }
     }
-void game::update(int time_nanosecs){
+void game::update(uint time_nanosecs){
     this_thread::sleep_for(chrono::nanoseconds(time_nanosecs));
-    system("cls");
+    system("clear");
 }
 void game::food_generator(){
     srand(time(0));
@@ -208,7 +225,7 @@ void game::chk_losing(){
     }
     if(!losing){
         body=s1.get_body();
-        update(10000);
+        update(100000000);
     }
 }
 
