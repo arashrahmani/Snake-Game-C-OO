@@ -7,7 +7,7 @@ object oriented implementation of terminal based snake game
 ## How To Play
 
 ###  Linux
-#### clone the master branch with this command
+#### clone the master branch
 ```
 $ git clone https://github.com/arashrahmani/Snake-Game-C-OO/tree/master
 ```
@@ -15,4 +15,15 @@ $ git clone https://github.com/arashrahmani/Snake-Game-C-OO/tree/master
 ```
 $ g++ snake.cpp -o snake-game
 $ ./snake-game
+```
+
+###  Windows
+#### clone the snake_game_windows branch
+```
+> git clone https://github.com/arashrahmani/Snake-Game-C-OO/tree/snake_game_windows
+```
+#### compile and run
+```
+> g++ snake.cpp -o snake-game
+> snake-game
 ```
