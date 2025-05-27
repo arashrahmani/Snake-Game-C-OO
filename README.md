@@ -28,4 +28,6 @@ $ ./snake-game
 > snake-game
 ```
 
-If you found this repository helpful in solving a problem or improving your workflow, I would truly appreciate it if you could consider giving it a star. Your support helps increase its visibility and encourages me to continue maintaining and enhancing it for the community.
+⭐ Support
+
+If you enjoyed this project or found it helpful, please consider starring this repo. Your support helps me keep improving and building new projects for the community.
